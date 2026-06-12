@@ -1,0 +1,74 @@
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.idea/
+.vscode/
+
+# Ignore build files
+build/
+obj/
+
+# Ignore SDL and OpenGL libraries
+lib/
+include/
+
+# Ignore compiled object files
+*.o
+*.obj
+
+# Ignore executable files
+*.exe
+
+# Ignore debug files
+*.pdb
+*.ilk
+
+# Ignore SDL and OpenGL configuration files
+SDL_config.txt
+gl3w_config.h
+
+# Ignore generated files
+gen/
+
+# Ignore logs
+logs/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.ntvs*
+*.nproj
+*.userosscache
+
+# Ignore Visual Studio files
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.user
+*.suo
+*.ntvs*
+*.nproj
+*.userosscache
+
+# Ignore CMake files
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
+# Ignore compiled shader files
+*.spv
+*.vert
+*.frag
+*.geom
+*.comp
+
+# Ignore third party
+third-party/*/
+
+
+.cache/*/
