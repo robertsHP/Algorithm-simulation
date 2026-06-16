@@ -14,12 +14,12 @@ MainScene::MainScene () {
     if (txtr->loaded()) {
         printf("LOADED\n");
 
-        txtr->generateSheetTemplates({ 29, 15 });
-        // txtr->removeColor({ 255, 0, 255, 255 });
+        txtr->removeColor({ 255, 0, 255, 255 });
+        txtr->generateSheetTemplates({ 30, 16 });
 
-        // m_bTile = std::make_unique<BoardTile>(
-        //     BoardTile::ID::LIGHT, this
-        // );
+        m_bTile = std::make_unique<BoardTile>(
+            BoardTile::ID::LIGHT, this
+        );
     }
 }
 MainScene::~MainScene () {
@@ -41,7 +41,7 @@ void MainScene::draw () {
     // auto rect = (SDL_Rect){100, 5, 100, 100};
     // Scene::getTexture("mouse")->draw(rect);
     
-    // if(m_bTile)
-    //     m_bTile->draw();
+    if(m_bTile)
+        m_bTile->draw();
 }
 

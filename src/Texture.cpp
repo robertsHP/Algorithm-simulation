@@ -75,13 +75,6 @@ void Texture::generateSheetTemplates (SDL_Point templSize) {
                             templSize.y
                         }
                     );
-                    
-                    // [id] = (SDL_Rect) {
-                    //     col * templSize.x,
-                    //     row * templSize.y,
-                    //     templSize.x,
-                    //     templSize.y
-                    // };
                 }
             }
         } 

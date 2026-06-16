@@ -27,7 +27,7 @@
 // #define MAIN_VANILLA_AUDIO_BITS		8
 // //!!!!!!!!!!!!!!!!
 
-#define DEBUG_ENABLED true
+#define DEBUG_ENABLED false
 
 #define PROJECT_ROOT std::string((DEBUG_ENABLED) ? "./" : "../")
 
