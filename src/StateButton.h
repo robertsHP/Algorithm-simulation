@@ -2,8 +2,9 @@
 
 #include "Scene.h"
 #include "Texture.h"
+#include "Object.h"
 
-class StateButton {
+class StateButton : public Object {
     public:
         enum ID : unsigned {
             START = 0,
@@ -17,43 +18,19 @@ class StateButton {
         static const int TXTR_HEIGHT = 24;
 
     private:
-        Scene *m_associatedScene;
         Texture *m_txtr;
         ID m_id;
 
-        union {
-            struct {
-                int m_x, m_y;
-                unsigned int m_w, m_h;
-            };
-            SDL_Rect m_rect;
-        };
     public:
         void setID (ID id) { m_id = id; }
 
     public:
         StateButton (ID id, SDL_Point pos, Scene *scene);
-        ~StateButton ();
+        ~StateButton () override;
 
-        void input ();
-        void update (float deltaTime);
-        void draw ();
-
-        bool ifHoveredOver (bool advanced) {
-            bool hoverX, hoverY;
-            int mouseX, mouseY;
-
-            SDL_GetMouseState(&mouseX, &mouseY);
-
-            hoverX = m_x < mouseX && (m_x + m_w) > mouseX;
-            hoverY = m_y < mouseY && (m_y + m_h) > mouseY;
-
-            // if(hoverX && hoverY) {
-
-            // }
-
-            return hoverX && hoverY;
-        }
+        void input () override;
+        void update (float deltaTime) override;
+        void draw () override;
 
     private:
         void startAction ();

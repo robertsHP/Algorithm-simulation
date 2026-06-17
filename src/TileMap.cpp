@@ -1,7 +1,9 @@
 #include "TileMap.h"
 
 
-TileMap::TileMap (SDL_Point pos, SDL_Point size, Scene *scene) : m_associatedScene(scene) {
+TileMap::TileMap (SDL_Point pos, SDL_Point size, Scene *scene) {
+    m_associatedScene = scene;
+
     int offsetRow, offsetCol;
 
     offsetRow = offsetCol = 0;

@@ -18,7 +18,7 @@ StateButton::~StateButton () {
 }
 
 void StateButton::input () {
-    if(ifHoveredOver(false)) {
+    if(ifHoveredOver()) {
         if(Input::mouseReleased(SDL_BUTTON_LEFT)) {
             switch (m_id) {
                 case START:
