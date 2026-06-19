@@ -1,7 +1,10 @@
 #include "TileMap.h"
 
 
-TileMap::TileMap (SDL_Point pos, SDL_Point size, Scene *scene) {
+TileMap::TileMap (SDL_Point pos, SDL_Point size, Scene *scene) 
+: Object(
+    { pos.x, pos.y, size.x, size.y }
+) {
     m_associatedScene = scene;
 
     int offsetRow, offsetCol;
@@ -10,8 +13,6 @@ TileMap::TileMap (SDL_Point pos, SDL_Point size, Scene *scene) {
     
     m_gapWidth = Tile::TXTR_WIDTH * 2;
     m_gapHeight = Tile::TXTR_HEIGHT * 2;
-    
-    m_rect = { pos.x, pos.y, size.x, size.y };
 
     for(int row = 0; row < m_rect.h; ++row) {
         offsetRow = 0;

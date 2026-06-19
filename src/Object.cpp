@@ -1,8 +1,8 @@
 #include "Object.h"
 
 
-Object::Object () {
-
+Object::Object (SDL_Rect rect) {
+    m_rect = rect;
 }
 
 Object::~Object () {

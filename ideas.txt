@@ -1,0 +1,46 @@
+
+
+https://lazyfoo.net/tutorials/SDL/18_key_states/index.php
+
+
+
+
+Procedural generation
+
+
+https://gamedev.stackexchange.com/questions/79049/generating-tile-map
+
+
+https://www.google.com/search?udm=2&q=tile+based+algorithm#sv=CAMSXhoyKhBlLU1FUDlHWEZtSGp5akFNMg5NRVA5R1hGbUhqeWpBTToOMEpvcTgyRUpTV3JUQ00gBCokCg5jbmlKdUs3blZPNEF5TRIQZS1NRVA5R1hGbUhqeWpBTRgAMAEYByCVpeLnDEoIEAEYASABKAE
+
+
+Fog of war algoritms
+
+
+
+
+
+https://www.google.com/search?q=2d+simulation&tbnid=nZAeyMsPgCLJdM&tbnh=0&tbnw=0&cs=0&udm=2#sv=CAMSXhoyKhBlLXBQSnZUa19qNzJOcVBNMg5wUEp2VGtfajcyTnFQTToOUmJuMGtjV1VhOGdlZE0gBCokCg5XdFRuRmNZTGdCajYwTRIQZS1wUEp2VGtfajcyTnFQTRgAMAEYByCg9cZhSggQARgBIAEoAQ
+
+
+water simulation
+https://www.google.com/search?q=2d+simulation&tbnid=nZAeyMsPgCLJdM&tbnh=0&tbnw=0&cs=0&udm=2#sv=CAMSVhoyKhBlLXg3LVo0cWUwVmEydFJNMg54Ny1aNHFlMFZhMnRSTToOMzlINDM3V0pySVlfQU0gBCocCgZtb3NhaWMSEGUteDctWjRxZTBWYTJ0Uk0YADABGAcgrJ6_mwZKCBABGAEgASgB
+
+
+
+
+
+https://github.com/almondigator/Fluid_SDL
+
+
+
+
+https://www.reddit.com/r/C_Programming/comments/yrr3qu/ive_written_my_first_game_engine_from_scratch/
+
+
+
+
+physics simulations
+https://www.google.com/search?q=2d+c%2B%2B+simulation&hl=lv&udm=2#sv=CAMSXhoyKhBlLXMzS2NMRVJ5WnhVTk9NMg5zM0tjTEVSeVp4VU5PTToOb3VucGlMbWVkUGFIQ00gBCokCg5xWWlyNGFBTTlrdFZMTRIQZS1zM0tjTEVSeVp4VU5PTRgAMAEYByDX0sjUDEoIEAEYASABKAE
+
+

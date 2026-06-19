@@ -11,9 +11,6 @@
 
 class CellularAutomata {
     private:
-        const int MAP_WIDTH = 70;
-        const int MAP_HEIGHT = 50;
-
         int *m_output;
         int *m_state;
 
@@ -24,6 +21,12 @@ class CellularAutomata {
         CellularAutomata (TileMap *tileMap);
         ~CellularAutomata ();
 
+    private:
+        void init ();
+        void free ();
+
+    public:
+        void reset ();
         void updateTiles ();
         // void draw();
         // void input();

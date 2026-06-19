@@ -2,13 +2,17 @@
 
 #include "Engine.h"
 
-Tile::Tile (ID id, SDL_Point pos, Scene *scene) {
+Tile::Tile (ID id, SDL_Point pos, Scene *scene) 
+: Object(
+    {pos.x, pos.y, TXTR_WIDTH * 2, TXTR_HEIGHT * 2}
+    // {255, 255, 255, 255}
+)
+{
     m_associatedScene = scene;
 
     m_txtr = m_associatedScene->getTexture("board");
 
     m_id = id;
-    m_rect = (SDL_Rect) { pos.x, pos.y, TXTR_WIDTH * 2, TXTR_HEIGHT * 2 };
 }
 Tile::~Tile () {
     // Debug::log("INFO", "Destroying Tile.");

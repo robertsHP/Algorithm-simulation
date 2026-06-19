@@ -4,9 +4,13 @@
 #include "SDL_rect.h"
 
 // #include "Tile.h"
+#include "Input.h"
 #include "CellularAutomata.h"
+#include "SDL_scancode.h"
 #include "StateButton.h"
 #include "Texture.h"
+
+#include "Enums.h"
 
 #include "main.h"
 
@@ -34,6 +38,7 @@ MainScene::MainScene () {
         txtr->generateSheetTemplates({ StateButton::TXTR_WIDTH, StateButton::TXTR_HEIGHT });
 
         loadStateButtons();
+        m_currentState = SimState::STOP;
     }
 
     m_celAutomata = new CellularAutomata(m_tileMap);
@@ -45,15 +50,15 @@ MainScene::~MainScene () {
     if (m_tileMap) delete m_tileMap;
     if (m_celAutomata) delete m_celAutomata;
 
-    for (int i = 0; i < StateButton::COUNT; ++i) {
+    for (int i = 0; i < SimState::COUNT; ++i) {
         if(m_stateButtons[i])
             delete m_stateButtons[i];
     }
 }
 
 void MainScene::loadStateButtons () {
-    for (int i = 0; i < StateButton::COUNT; ++i) {
-        StateButton::ID id = (StateButton::ID) i;
+    for (int i = 0; i < SimState::COUNT; ++i) {
+        SimState id = (SimState) i;
 
         m_stateButtons[i] = new StateButton(
             id,
@@ -64,11 +69,12 @@ void MainScene::loadStateButtons () {
             this
         );
     }
+
 }
 
 void MainScene::input () {
 
-    for (int i = 0; i < StateButton::COUNT; ++i) {
+    for (int i = 0; i < SimState::COUNT; ++i) {
         if(m_stateButtons[i])
             m_stateButtons[i]->input();
     }
@@ -79,7 +85,21 @@ void MainScene::update (float deltaTime) {
 
     if(m_tileMap) {
         if (m_celAutomata) {
-            m_celAutomata->updateTiles();
+
+            switch (m_currentState) {
+                case SimState::START:
+                    m_celAutomata->updateTiles();
+                    break;
+                case SimState::STOP:
+                    
+                    break;
+                case SimState::RESET:
+                    m_celAutomata->reset();
+                    m_currentState = SimState::STOP;
+
+                    m_celAutomata->updateTiles();
+                    break;
+            }
         }
     }
 }
@@ -89,7 +109,7 @@ void MainScene::draw () {
     // auto rect = (SDL_Rect){100, 5, 100, 100};
     // Scene::getTexture("mouse")->draw(rect);
     
-    for (int i = 0; i < StateButton::COUNT; ++i) {
+    for (int i = 0; i < SimState::COUNT; ++i) {
         if(m_stateButtons[i])
             m_stateButtons[i]->draw();
     }

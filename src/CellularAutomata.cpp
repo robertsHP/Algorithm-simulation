@@ -1,10 +1,19 @@
 #include "CellularAutomata.h"
 
 CellularAutomata::CellularAutomata (TileMap *tileMap) {
-    Debug::log("INFO", "Init CellularAutomata.");
-
     m_tileMap = tileMap;
 
+    Debug::log("INFO", "Init CellularAutomata.");
+
+    init();
+}
+
+CellularAutomata::~CellularAutomata () {
+    Debug::log("INFO", "Destroy CellularAutomata.");
+    free();
+}
+
+void CellularAutomata::init () {
     SDL_Rect &tileMapRect = m_tileMap->getRect();
 
     size_t mapSize = tileMapRect.w * tileMapRect.h;
@@ -50,11 +59,16 @@ CellularAutomata::CellularAutomata (TileMap *tileMap) {
     m_timer.start();
 }
 
-CellularAutomata::~CellularAutomata () {
-    Debug::log("INFO", "Destroy CellularAutomata.");
-
+void CellularAutomata::free () {
     if (m_output) delete m_output;
     if (m_state) delete m_state;
+}
+
+void CellularAutomata::reset() {
+    Debug::log("INFO", "Reset CellularAutomata.");
+
+    free ();
+    init ();
 }
 
 void CellularAutomata::updateTiles () {

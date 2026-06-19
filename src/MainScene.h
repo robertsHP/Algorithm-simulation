@@ -20,7 +20,19 @@
 #include "TileMap.h"
 #include "StateButton.h"
 
+
 class MainScene : public Scene {
+    public:
+
+    //     enum SimState {
+    //         START, STOP, RESET,
+    //         COUNT
+    //     };
+
+        void setCurrentSimState (SimState state) { 
+            m_currentState = state;
+        }
+
     private :
         // std::shared_ptr<Engine::ShaderProgram> plainShader;
         // std::shared_ptr<Engine::Mesh> mesh;
@@ -30,7 +42,9 @@ class MainScene : public Scene {
         TileMap *m_tileMap;
         CellularAutomata *m_celAutomata;
 
-        StateButton *m_stateButtons [StateButton::COUNT];
+        StateButton *m_stateButtons [SimState::COUNT];
+
+        SimState m_currentState;
 
     public:
         MainScene();

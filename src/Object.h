@@ -9,11 +9,18 @@ class Object {
         // std::unique_ptr<Texture> txtr;
         // unsigned txtrIndex;
 
-        // union {
-        //     struct { Uint8 r, g, b, a; };
-        //     SDL_Color color;
-        // };
         
+        // union {
+        //     struct { Uint8 m_r, m_g, m_b, m_a; };
+        //     SDL_Color m_color;
+        // };
+
+
+        // unsigned int r = 255,g = 255,b = 255;
+        // const float COLOR_UPDATE = 0.0166667;
+            
+
+
         union {
             struct {
                 int m_x, m_y;
@@ -37,10 +44,11 @@ class Object {
         bool ifHoveredOver ();
 
     public:
-        Object ();
+        Object (SDL_Rect rect);
         virtual ~Object ();
 
         virtual void input () {}
         virtual void update (float deltaTime) {}
         virtual void draw () {}
 };
+
