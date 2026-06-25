@@ -12,7 +12,7 @@ TileMap::TileMap (SDL_Point pos, SDL_Point size, Scene *scene)
     offsetRow = offsetCol = 0;
     
     m_gapWidth = Tile::TXTR_WIDTH * 2;
-    m_gapHeight = Tile::TXTR_HEIGHT * 2;
+    m_gapHeight = Tile::TXTR_HEIGHT;
 
     for(int row = 0; row < m_rect.h; ++row) {
         offsetRow = 0;

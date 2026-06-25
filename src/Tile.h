@@ -16,7 +16,7 @@ class Tile : public Object {
         };
 
         static const int TXTR_WIDTH = 30;
-        static const int TXTR_HEIGHT = 16;
+        static const int TXTR_HEIGHT = 29;
 
     private:
         Texture *m_txtr;

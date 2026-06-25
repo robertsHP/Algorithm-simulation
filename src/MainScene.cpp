@@ -29,7 +29,7 @@ MainScene::MainScene () {
         // );
 
         m_tileMap = new TileMap (
-            (SDL_Point) { 485, 100 }, (SDL_Point) {17, 17}, this
+            (SDL_Point) { 482, 100 }, (SDL_Point) {17, 17}, this
         );
     }
 
