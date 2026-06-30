@@ -20,3 +20,4 @@ bool Object::ifHoveredOver () {
 
     return hoverX && hoverY;
 }
+

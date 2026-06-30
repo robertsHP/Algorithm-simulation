@@ -1,41 +1,83 @@
 #include "TileMap.h"
+#include "Enums.h"
 
-
-TileMap::TileMap (SDL_Point pos, SDL_Point size, Scene *scene) 
-: Object(
-    { pos.x, pos.y, size.x, size.y }
-) {
+TileMap::TileMap (
+    SDL_Rect rect, TileType startingTileType, Scene *scene
+) : Object(rect) 
+{
+    m_viewType = startingTileType;
     m_associatedScene = scene;
 
+    generateIsometricTileMap();
+    generateTopTileMap();
+}
+
+void TileMap::generateIsometricTileMap () {
     int offsetRow, offsetCol;
 
     offsetRow = offsetCol = 0;
     
-    m_gapWidth = Tile::TXTR_WIDTH * 2;
-    m_gapHeight = Tile::TXTR_HEIGHT;
+    int gapWidth = Tile::TXTR_WIDTH * 2;
+    int gapHeight = Tile::TXTR_HEIGHT;
 
     for(int row = 0; row < m_rect.h; ++row) {
         offsetRow = 0;
 
         for(int col = 0; col < m_rect.w; ++col) {
-            int finalColVal = col * m_gapWidth / 2 + offsetCol;
-            int finalRowVal = row * m_gapHeight / 2 + offsetRow;
+            int finalColVal = col * gapWidth / 2 + offsetCol;
+            int finalRowVal = row * gapHeight / 2 + offsetRow;
 
-            finalColVal += pos.x;
-            finalRowVal += pos.y;
+            finalColVal += m_rect.x;
+            finalRowVal += m_rect.y;
 
-            m_tiles.insert_or_assign(
+            m_isoTiles.insert_or_assign(
                 row * m_rect.w + col, 
                 std::make_unique<Tile>(
                     Tile::ID::RED, 
-                    (SDL_Point) {finalColVal, finalRowVal}, 
-                    scene
+                    (SDL_Point) {finalColVal, finalRowVal},
+                    TileType::ISOMETRIC,
+                    m_associatedScene
                 )
             );
 
-            offsetRow += m_gapHeight / 2;
+            offsetRow += gapHeight / 2;
         }
-        offsetCol -= m_gapWidth / 2;
+        offsetCol -= gapWidth / 2;
+    }
+}
+
+void TileMap::generateTopTileMap () {
+    int offsetRow, offsetCol;
+
+    offsetRow = offsetCol = 0;
+
+    int gapWidth = Tile::TXTR_WIDTH;
+    int gapHeight = Tile::TXTR_HEIGHT;
+    
+    for(int row = 0; row < m_rect.h; ++row) {
+        offsetRow = 0;
+
+        for(int col = 0; col < m_rect.w; ++col) {
+            int finalColVal = col * gapWidth;
+            int finalRowVal = row * gapHeight;
+
+            finalColVal += m_rect.x;
+            finalRowVal += m_rect.y;
+
+            m_topTiles.insert_or_assign(
+                row * m_rect.w + col, 
+                std::make_unique<Tile>(
+                    Tile::ID::RED, 
+                    (SDL_Point) {finalColVal, finalRowVal},
+                    TileType::ISOMETRIC,
+                    m_associatedScene
+                )
+            );
+
+            offsetCol += m_rect.w;
+        }
+        
+        offsetRow += m_rect.h;
     }
 }
 
@@ -55,7 +97,10 @@ void TileMap::update (float deltaTime) {
 }
 
 void TileMap::draw () {
-    for (const auto& [pos, tile] : m_tiles) {
+    auto &tiles = (m_viewType == TileType::ISOMETRIC) ?
+                    m_isoTiles : m_topTiles;
+
+    for (const auto& [pos, tile] : tiles) {
         if(tile)
             tile->draw();
     }

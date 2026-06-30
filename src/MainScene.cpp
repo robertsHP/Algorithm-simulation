@@ -9,7 +9,6 @@
 #include "SDL_scancode.h"
 #include "StateButton.h"
 #include "Texture.h"
-
 #include "Enums.h"
 
 #include "main.h"
@@ -29,7 +28,9 @@ MainScene::MainScene () {
         // );
 
         m_tileMap = new TileMap (
-            (SDL_Point) { 482, 100 }, (SDL_Point) {17, 17}, this
+            (SDL_Rect) { 482, 100, 17, 17}, 
+            TileType::TOP,
+            this
         );
     }
 

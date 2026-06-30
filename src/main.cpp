@@ -16,8 +16,7 @@ void printWorkingDir () {
     printf("Current path is %s\n", std::filesystem::current_path().c_str());
 }
 
-int main()
-{
+int main() {
     printWorkingDir();
 
     Engine &engine = Engine::getInstance();

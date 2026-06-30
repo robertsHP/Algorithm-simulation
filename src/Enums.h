@@ -8,3 +8,7 @@ enum SimState : unsigned {
     
     COUNT
 };
+
+enum TileType {
+    ISOMETRIC, TOP
+};

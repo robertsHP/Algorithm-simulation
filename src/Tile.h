@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "Texture.h"
 #include "Object.h"
+#include "Enums.h"
 
 class Tile : public Object {
     public:
@@ -21,12 +22,13 @@ class Tile : public Object {
     private:
         Texture *m_txtr;
         ID m_id;
+        TileType m_tileType;
 
     public:
         void setID (ID id) { m_id = id; }   
 
     public:
-        Tile (ID id, SDL_Point pos, Scene *scene);
+        Tile (ID id, SDL_Point pos, TileType tileType, Scene *scene);
         ~Tile () override;
 
         void input () override;
@@ -34,3 +36,6 @@ class Tile : public Object {
         void draw () override;
 };
 
+class IsoTile : public Tile {
+
+};
